@@ -1,4 +1,4 @@
-﻿namespace Bot3;
+﻿namespace BotTelegram;
 
 internal class TelegramManager
 {

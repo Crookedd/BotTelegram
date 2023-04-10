@@ -1,4 +1,4 @@
-﻿using Bot3;
+﻿using BotTelegram;
 using Telegram.Bot;
 using Telegram.Bot.Exceptions;
 using Telegram.Bot.Polling;
