@@ -1,5 +1,4 @@
-﻿
-//using BotTelegram;
+﻿using Bot3;
 using Telegram.Bot;
 using Telegram.Bot.Exceptions;
 using Telegram.Bot.Polling;
@@ -7,12 +6,13 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
 
-const string TELEGRAM_TOKEN = "5697794511:AAEvb4Q6AKdxt3Br6Q1uqG8SOfLbWNW9m9g";
+//const string TELEGRAM_TOKEN = "5697794511:AAEvb4Q6AKdxt3Br6Q1uqG8SOfLbWNW9m9g";
 
+string TELEGRAM_TOKEN = TelegramManager.Instance.Token;
 var BotClient = new TelegramBotClient(TELEGRAM_TOKEN);
 using var cts = new CancellationTokenSource();
 
-var ObsceneWord = new List<string>() {"мат", "mat", "цензура"};
+//var ObsceneWord = new List<string>() {"мат", "mat", "цензура"};
 
 var receiverOptions = new ReceiverOptions
 {
@@ -44,16 +44,16 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
         string firstName = update.Message.From.FirstName;
         Console.WriteLine($"Получено сообщение: '{messageText}' в чате {chatID}");
 
-        for (int Index = 0; Index < ObsceneWord.Count; Index++)
+        for (int Index = 0; Index < TelegramManager.Instance.ObsceneWord.Count; Index++)
         {
-            string Word = ObsceneWord[Index];
+            string Word = TelegramManager.Instance.ObsceneWord[Index];
             if (messageText != null && messageText == Word)
             {
                 await botClient.DeleteMessageAsync(chatId: chatID, messageId: messageID,
                       cancellationToken: cancellationToken);
                 await BotClient.SendTextMessageAsync(
                 chatId: chatID,
-                text: $"Я попрошу вас не выражаться, {firstName}! Спасибо,за понимание.",
+                text: $"Я попрошу вас не выражаться, {firstName}!Спасибо,за понимание.",
                 cancellationToken: cancellationToken);
 
             }
