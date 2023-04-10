@@ -6,13 +6,9 @@ using Telegram.Bot.Types;
 using Telegram.Bot.Types.Enums;
 using Telegram.Bot.Types.ReplyMarkups;
 
-//const string TELEGRAM_TOKEN = "5697794511:AAEvb4Q6AKdxt3Br6Q1uqG8SOfLbWNW9m9g";
-
 string TELEGRAM_TOKEN = TelegramManager.Instance.Token;
 var BotClient = new TelegramBotClient(TELEGRAM_TOKEN);
 using var cts = new CancellationTokenSource();
-
-//var ObsceneWord = new List<string>() {"мат", "mat", "цензура"};
 
 var receiverOptions = new ReceiverOptions
 {
@@ -90,7 +86,6 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
 }
 
 //нужен для обработки ошибок в случае обновлений.
-
 Task HandleErrorAsync(ITelegramBotClient botClient, Exception exception, CancellationToken cancellationToken)
 {
     var ErrorMesssage = exception switch
