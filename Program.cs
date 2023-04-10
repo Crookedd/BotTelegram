@@ -69,7 +69,7 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
                 cancellationToken: cancellationToken);
         }
 
-        if (messageText == "Help")
+        if (messageText.ToLower().Contains("help"))
         {
             Message sentMessage = await BotClient.SendTextMessageAsync(
                 chatId: chatID,
