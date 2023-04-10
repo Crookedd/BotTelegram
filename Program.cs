@@ -53,7 +53,7 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
                       cancellationToken: cancellationToken);
                 await BotClient.SendTextMessageAsync(
                 chatId: chatID,
-                text: $"Я попрошу вас не выражаться, {firstName}!Спасибо,за понимание.",
+                text: $"Я попрошу вас не выражаться, {firstName}! Спасибо,за понимание.",
                 cancellationToken: cancellationToken);
 
             }
@@ -79,7 +79,7 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
                 replyMarkup: mainMenu,
                 cancellationToken: cancellationToken);
         }
-        if (messageText == "Как дела?")
+        if (messageText.ToLower().Contains("Как дела?"))
         {
             Message sentMessage = await BotClient.SendTextMessageAsync(
                 chatId: chatID,
