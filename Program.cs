@@ -75,7 +75,7 @@ async Task HandleUpdateAsync(ITelegramBotClient botClient, Update update, Cancel
                 replyMarkup: mainMenu,
                 cancellationToken: cancellationToken);
         }
-        if (messageText.ToLower().Contains("Как дела?"))
+        if (messageText == "Как дела?" || messageText == "как дела?")
         {
             Message sentMessage = await BotClient.SendTextMessageAsync(
                 chatId: chatID,
